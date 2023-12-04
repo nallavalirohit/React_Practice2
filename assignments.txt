@@ -1,0 +1,177 @@
+1. What is Emmet?
+
+It is a web-developers toolkit that work on HTML/CSS/any languages.
+
+Emmet is extension to the idea of snippets.
+It takes an abbrevation as input, dynamically parses it to produce the skeleton structure of elements.
+
+2. Difference b/w Library and Framework?
+
+The difference between a framework and library lies in a term called inversion of control.
+
+When you use a library, you are in charge of the flow of the application. 
+You are choosing when and where to call the library. When you use a framework, the framework is in charge of the flow. 
+It provides some places for you to plug in your code, but it calls the code you plugged in as needed.
+You can import a library and use it to implement a small feature in your application.
+
+3. What is CDN? Why do we use it?
+
+Stands for Content Delivery Network. It is a geographically distributed set of servers that cache content to the nearest end users.
+It allows quick transfer of assests needed for loading content, including HTML pages, CSS, JS files, videos and images.
+
+Advantages:
+Improves website load times - Achieves by reducing bounce rates and increases the time people stay on the website.
+
+Reducing Bandwidth Costs - Through caching and other optimizations, CDN's are able to reduce the amount of data and origin server must provide resulting in reduces costs.
+
+Increasing content availability and redundancy - Handles hardware failure issues due to its distributed nature, it can handle more traffic.
+
+Improving Website security - By providing DDoS mitigation, improvements to security certificates and other optimizations.
+
+4. Why is React known as React?
+
+Because of it helps developers to build fast and responsive responsive web apps. It is used to build reusable components that can be rendered on the frontend.
+
+It achieves this quickness through the concept of virtual DOM, by rendering only the components that experienced change in data instead of rendering the whole page.
+
+5. What is cross-origin in the script tag?
+
+It is an attribute that sets the mode of request to the HTTP CORS Request.
+
+CORS stands for cross-origin Request Sharing.
+
+It is a mechanism that allows resources of a webpage to be requested from another domain, apart from its own domain.
+
+CORS allows servers to specify who can access the assets on the server, among many other things.
+
+6. What is the difference between React and react DOM?
+
+ReactDOM is a glue between React library and the DOM. Mainly used for mounting with ReactDOM.render().
+
+React is used to define and create different elements, lifecycle hooks, etc. It is the crux/backbone of the React application.
+
+They are split into different libraries due to the introduction to React Native. React can be used to build web and mobile apps, where as ReactDOM is only used for web apps.
+
+7. What is the difference b/w react.development.js and react.production.js files via CDN?
+
+In development mode, we can enable and utilize React developer tools, devtools profiler, debugging environment attached with source code. We can utilize various functionalities such as Hot Module Replacement, diagnostics so that development environment will help to debug code.
+
+In production mode, compression and minification of Javascript and other resources happens to reduce size of the code which is not the case when it comes to development mode. Performance will be much faster in production mode when compared to development mode.
+
+
+***************************************************Assignment-2********************************************************************
+
+1. What is NPM?
+
+NPM is worlds largest software registry. It contains over 800,000 code packages. It is a default package manager for node.js runtime.
+All npm are defined in package.json file which is written in JSON format.
+NPM consists of two main parts:
+
+    a CLI (command-line interface) tool for publishing and downloading packages, and
+    an online repository that hosts JavaScript packages
+
+2. What is parcel/webpack? why do we need it?
+
+They are JS bundlers which is a tool that merges multiple JS files along with their dependecies into a single file, also known as bundle.
+They are used to bundle JS/TS files, CSS, images or any other languages. They perform many optimizations like minification, image optimizations, tree shaking, code splitting etc.
+
+Bundlers use the following techniques to optimize code and build times:
+1. Input Gathering
+2. Dependency Resolution
+3. Code Transformation
+    -minification
+    -transpilation
+    -optimization
+4. Asset Bundling
+    -Asset Importing
+    -Asset loading Rules
+    -Asset processing
+    -URL Generation
+    -Bundle Generation
+    -Asset serving
+5. Bundling
+6. Output Generation
+
+Reference : https://kinsta.com/blog/rollup-vs-webpack-vs-parcel/
+
+3. What is parcel-cache?
+
+It is a folder that stores information about your project when parcel builds it. So that when parcel re-builds, it doesn't have to re-parse and re-analyze everything from scratch.
+It is a key reason behind faster dev build times.
+
+4. What is npx?
+npx stands for 'node package eXecute'. It is a node package runner, it allows us to execute any JS package available on the npm registry
+without the need to install it.
+
+5. What is the difference between dependecies and devDependencies?
+
+Dependencies: Packages required by your application in Production environment.
+devDependencies: Packages that are needed for local development and testing.
+
+6. What is Tree Shaking?
+
+Tree shaking is a technique used by bundlers to remove the dead code/code not being used.
+It relies on the import and export statements to detect if code modules are being imported/exported to use between JS files.
+
+7. What is HMR(Hot Module Replacement)?
+
+HRM exchanges, adds, removes modules while an application is running, without a full reload.
+Advantages:
+    - Retains application state which is lost during a full reload.
+    - Save development time by only updating that's changed.
+    - Instantly updates browser when changes are made to CSS/JS files.
+
+Reference: https://webpack.js.org/concepts/hot-module-replacement/
+
+8. List 5 superpowers of parcel and describe any 3 in your own words?
+
+Zero config - Supports many languages and file types OUT OF THE BOX(no configurations needed). When you don't include a file type that isn't
+included by default, Parcel will automatically install all the necessary plugins and dev dependecies for you.
+
+Hot Reloading - Any changes made in the code, parcel automatically updates the code in the browser - no page reload necessary.
+
+Diagnostics - As a dev, finding out errors based on the canned error codes can be challenging. Parcel makes the error messages more defined and hints on how to resolve it.
+
+Tree-shaking - technique to remove unused code from the build.
+
+Code-splitting - When multiple parts of the application depends on the common modules, they are automatically duplicated in separate bundle.
+Allows dependecies to load simultaneously with the application code and cached separately in the browser.
+
+Lazy dev builds - Specially useful in complex projects with multiple entries and split points. Parcel can defer building files until they are requested in the browser.
+
+9. What is gitignore? What should/shouldn't we add in it?
+
+It is a file that tell Git what files to ignore while commiting your changes to the Github repository. Its a plain txt document, present at the root level of the project.
+We can add node_modules in it  because of the size of the folder. Any folders or Dependency package folders that can be regenerated at the time of build.
+
+10. what is the difference between package.json and package-lock.json?
+
+package.json - This file is used for managing and documenting metadata about the poject like name, version, author, dependecies, devDependencies and other config details.
+It acts like a manifest for the project.
+
+package-lock.json - This file is generated and updated automatically by npm if any packages are updated or installed in the project.
+It is used to lock the exact version of dependecies installed in the project.
+
+11. Why should I not modify package-lock.json?
+
+It locks the dependecies needed to run the project. It is generated based on the versions mentioned in package.json. Any changes made to package-lock.json will result in version mismatch with other dependecies.
+If any changes are to be made to any versions, its better to make those changes in package.json and run npm install after.
+
+12. What is node-modules? Is it a good idea to push on git?
+
+In Node.js, Modules are the blocks of encapsulated code that communicate with an external application on the basis of their related functionality. 
+Modules can be a single file or a collection of multiple files/folders. The reason programmers are heavily reliant on modules is because of their reusability as well as the ability to break down a complex piece of code into manageable chunks. 
+
+13. What is the dist folder?
+
+-The /dist stands for distributable.
+-The /dist folder contains the minimized version of the source code.
+-The code present in the /dist folder is actually the code which is used on production web applications.
+-Along with the minified code, the /dist folder also comprises of all the compiled modules that may or may not be used with other systems.
+-It is easier to add files to the /dist folder as it is an automatic process. All the files are automatically copied to the dist folder on save.
+-The /dist folder also contains all those files which are required to run/build a module for use with other platforms- either directly in the browser, or in an AMD system (eg. require.js).
+-Ideally, it is considered a good practice to clean the /dist folder before each build.
+
+14. What is browerlists?
+
+It is a configuration file that determines which browser your project should support.
