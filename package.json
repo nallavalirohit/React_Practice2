@@ -4,6 +4,8 @@
   "description": "This is react practice 2.",
   "main": "app.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "build index.html",
     "test": "jest"
   },
   "repository": {
