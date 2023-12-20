@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { dataList } from "../utils/MockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // let listofRestaurants = [
 //   {
@@ -72,19 +73,19 @@ const Body = () => {
 
   let [searchText, setsearchText] = useState("");
 
-  useEffect(async () => {
+  useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json);
-    // console.log(
-    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+    console.log(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
     setlistofRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -117,7 +118,7 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              console.log(searchText);
+              // console.log(searchText);
               const filteredRes = listofRestaurants.filter((res)=>(
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
                 ));
@@ -143,10 +144,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRes.map((data) => (
-          <RestaurantCard
-            key={data?.data?.id ? data?.data?.id : data?.info?.id}
+          <Link key={data?.info?.id} to={"/restaurant/" + data?.info?.id}><RestaurantCard
             responseData={data}
-          />
+          /></Link>
         ))}
       </div>
     </div>
