@@ -93,10 +93,10 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log("listofRestaurants");
-  console.log(listofRestaurants);
-  console.log("filteredRes");
-  console.log(filteredRes);
+  // console.log("listofRestaurants");
+  // console.log(listofRestaurants);
+  // console.log("filteredRes");
+  // console.log(filteredRes);
 
   //Conditional Rendering - Rendering that is based on condition like Shimmer UI
   // if(listofRestaurants.length === 0){
