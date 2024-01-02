@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountsLabel } from "./RestaurantCard";
 import { dataList } from "../utils/MockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -85,17 +85,17 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setlistofRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setfilteredRes(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  // console.log("listofRestaurants");
-  // console.log(listofRestaurants);
+  console.log("listofRestaurants");
+  console.log(listofRestaurants);
   // console.log("filteredRes");
   // console.log(filteredRes);
 
@@ -106,57 +106,65 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false){
-    return(
-      <h1>You're offline. Internet disconnected!</h1>
-    );
+  const RestaurantCardwithDiscounts = withDiscountsLabel(RestaurantCard);
+
+  if (onlineStatus === false) {
+    return <h1>You're offline. Internet disconnected!</h1>;
   }
 
   return listofRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex justify-between">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            placeholder="search...."
-            className="search-box"
+            placeholder=" search...."
+            className="search-box border border-solid border-black rounded-sm"
             value={searchText}
             onChange={(event) => setsearchText(event.target.value)}
           />
           <button
+            className="px-4 py-1 bg-slate-400 m-4 rounded-lg"
             onClick={() => {
               // console.log(searchText);
-              const filteredRes = listofRestaurants.filter((res)=>(
+              const filteredRes = listofRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                ));
-                setfilteredRes(filteredRes);
-            }
-        }
+              );
+              setfilteredRes(filteredRes);
+            }}
           >
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            filteredRes = listofRestaurants.filter(
-              (res) => res.info.avgRating > 4
-            );
-            // console.log(listofRestaurants);
-            setfilteredRes(filteredRes);
-          }}
-        >
-          High rated Restaurants
-        </button>
+        <div className="m-6 p-4 items-center">
+          <button
+            className="px-4 border border-solid border-black bg-slate-400 rounded-md shadow-lg"
+            onClick={() => {
+              filteredRes = listofRestaurants.filter(
+                (res) => res.info.avgRating > 4
+              );
+              // console.log(listofRestaurants);
+              setfilteredRes(filteredRes);
+            }}
+          >
+            High rated Restaurants
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="m-auto w-[1140px]">
+      <div className="grid grid-cols-4 gap-8 my-8 mx-4">
         {filteredRes.map((data) => (
-          <Link key={data?.info?.id} to={"/restaurant/" + data?.info?.id}><RestaurantCard
-            responseData={data}
-          /></Link>
+          <Link key={data?.info?.id} to={"/restaurant/" + data?.info?.id}>
+            {data?.info?.aggregatedDiscountInfoV3 ? (
+              <RestaurantCardwithDiscounts responseData={data}/>
+            ) : (
+              <RestaurantCard responseData={data} />
+            )}
+          </Link>
         ))}
+      </div>
       </div>
     </div>
   );

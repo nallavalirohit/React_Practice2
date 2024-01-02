@@ -1,120 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,100&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-    background-color: #FFFFFF;
-  }
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    background-color: #FFFFFF;
-    padding: 5px 10px;
-    border: solid;
-    border-width: thin;
+.item-name{
+    color: #fff;
+    font-weight: bold;
+    top: 7.2rem;
+    left: 11px;
+    opacity: 1;
+    font-size: 1.2rem;
+    z-index: 1;
 }
-.logo{
-    height: 100px;
-    width: 130px;
+.item-container{
+    margin: auto;
+    width: 1140px;
 }
-
-.header-right{
-    display: flex;
-    padding: 10px;
-    border: 10px;
+.item{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin: 32px 16px;
 }
-
-.header-right > ul{
-    display: flex;
-    justify-content: space-between;
-    padding: 2px;
-    border: 5px;
-}
-
-/* .header-right > ul > li{
-    padding: 10px;
-    border: 10px;
-    color: #a58686;
-    font-family: 'Anton', sans-serif;
-    list-style-type: none;
-    font-size: 1.5rem;
-} */
-
-.header-right > ul > li{
-    padding: 10px;
-    border: 10px;
-    /* color: #a58686; */
-    font-size: 1.5rem;
-    font-family: 'Anton', sans-serif;
-    --h: 1.2em;   /* the height */
-    
-    line-height: var(--h);
-    color: #a58686;
-    text-shadow: 
-      0 var(--_i,var(--h)) #FFFFFF,
-      0 0 rgb(0 0 0 / var(--_i,1));
-    background: 
-      linear-gradient(#d5d5d5 0 0) 
-      bottom/100% calc(100% - var(--_i,1)*100%) no-repeat;
-    overflow: hidden;
-    transition: 0.3s;
-  }
-  .header-right > ul > li:hover {
-    --_i: 0;
-  }
-
-.res-container{
-    display:flex;
-    flex-wrap: wrap;
-}
-
-.res-card{
-    width: 200px;
-    padding: 5px;
-    margin: 5px;
-    background-color: #d5d5d5;
-}
-
-.res-card:hover{
-    cursor: pointer;
-    border: 1px solid black;
-}
-
-.searchBar{
-    padding: 15px;
-}
-
-.res-logo{
-    width: 100%;
-}
-
-.shimmer-card{
-    margin: 20px;
-    height: 400px;
-    width: 200px;
-    background-color: #f0f0f0;
-}
-
-.shimmer-container{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.btnLogin{
-    cursor: pointer;
-}
-
-.filter{
-    display: flex;
-    margin: 10px;
-}
-
-.filter-btn{
-    margin-left: auto;
-    cursor: pointer;
-}
-
-.user-card{
-    padding: 10px;
-    border: 1px solid black;
+.rounded-md{
+    border-radius: 1rem;
 }
