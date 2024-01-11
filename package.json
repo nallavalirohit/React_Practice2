@@ -20,14 +20,17 @@
   },
   "homepage": "https://github.com/nallavalirohit/React_Practice2#readme",
   "devDependencies": {
+    "@testing-library/react": "^14.1.2",
     "parcel": "^2.10.3",
     "postcss": "^8.4.32",
     "process": "^0.11.10",
     "tailwindcss": "^3.4.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.0"
   }
 }
